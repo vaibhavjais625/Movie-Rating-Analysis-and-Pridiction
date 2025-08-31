@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Rating Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('static/moviebackground2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: #244a4e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background: rgba(240, 165, 52, 0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3b3f;
+            text-shadow: 1px 1px 2px #fff;
+            user-select: none;
+        }
+        main {
+            background: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            width: 90%;
+            margin: 30px 0 50px 0;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-control {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #244a4e;
+        }
+        input[type="text"], select {
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #f0a534;
+            outline: none;
+            box-shadow: 0 0 8px rgba(240, 165, 52, 0.6);
+        }
+        input[type="submit"] {
+            background-color: #f0a534;
+            color: #1e3b3f;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #d18e2a;
+        }
+        .genre-list {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #244a4e;
+            background: rgba(240, 165, 52, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            line-height: 1.5;
+            user-select: none;
+        }
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8rem;
+                padding: 15px 0;
+            }
+            main {
+                width: 95%;
+                padding: 20px 15px;
+            }
+            input[type="text"], select {
+                font-size: 0.95rem;
+                padding: 10px 12px;
+            }
+            input[type="submit"] {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            .genre-list {
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Predict Rating of Your Movie!!</header>
+    <main>
+        <form action="/predict" method="post">
+            <div class="form-control">
+                <label for="input0">Year:</label>
+                <input type="text" id="input0" name="input0" placeholder="Enter Year of Movie" />
+            </div>
+            <div class="form-control">
+                <label for="input1">Runtime:</label>
+                <input type="text" id="input1" name="input1" placeholder="Enter Runtime of Movie" />
+            </div>
+            <div class="form-control">
+                <label for="input2">Votes:</label>
+                <input type="text" id="input2" name="input2" placeholder="Enter Number of Votes" />
+            </div>
+            <div class="form-control">
+                <label for="input3">Label:</label>
+                <select id="input3" name="input3">
+                    <option value="0">Action</option>
+                    <option value="1">Adult</option>
+                    <option value="2">Adventure</option>
+                    <option value="3">Animation</option>
+                    <option value="4">Biography</option>
+                    <option value="5">Comedy</option>
+                    <option value="6">Crime</option>
+                    <option value="7">Drama</option>
+                    <option value="8">Family</option>
+                    <option value="9">Film-Noir</option>
+                    <option value="10">Game-Show</option>
+                    <option value="11">History</option>
+                    <option value="12">Horror</option>
+                    <option value="13">Musical</option>
+                    <option value="14">Mystery</option>
+                    <option value="15">Reality-TV</option>
+                    <option value="16">Romance</option>
+                    <option value="17">Sci-Fi</option>
+                    <option value="18">Short</option>
+                    <option value="19">Sport</option>
+                    <option value="20">Thriller</option>
+                    <option value="21">War</option>
+                    <option value="22">Western</option>
+                    <option value="23">Fantasy</option>
+                    <option value="24">Music</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="input4">Gross (in $):</label>
+                <input type="text" id="input4" name="input4" placeholder="Enter Gross Revenue" />
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+        <div class="genre-list">
+            0.Action 1.Adult 2.Adventure 3.Animation 4.Biography 5.Comedy 6.Crime 7.Drama 8.Family 9.Film-Noir 10.Game-Show 11.History 12.Horror 13.Musical 14.Mystery 15.Reality-TV 16.Romance 17.Sci-Fi 18.Short 19.Sport 20.Thriller 21.War 22.Western 23.Fantasy 24.Music
+        </div>
+    </main>
+</body>
+</html>

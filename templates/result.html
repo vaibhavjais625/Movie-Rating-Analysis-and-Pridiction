@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('static/moviebackground2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: #244a4e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            background-color: rgba(255, 228, 196, 0.8);
+            font-size: 2.5rem;
+            margin: 40px 0 20px 0;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 2px 5px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            color: #244a4e;
+            font-weight: 700;
+            user-select: none;
+        }
+        .high-rating-title {
+            font-size: 1.8rem;
+            color: #1f4e79;
+            margin: 20px 0 10px 0;
+            font-weight: 700;
+            user-select: none;
+        }
+        .genre-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            padding: 10px;
+        }
+        .genre-box {
+            background-color: rgba(250, 194, 172, 0.6);
+            border: 5px solid rgb(250, 194, 172);
+            border-radius: 12px;
+            padding: 15px;
+            width: 250px;
+            box-sizing: border-box;
+            color: #3131f1;
+            font-weight: 600;
+            user-select: none;
+        }
+        .genre-box b {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .genre-box p {
+            margin: 0;
+            line-height: 1.4;
+            font-size: 1rem;
+        }
+        .prediction-button {
+            background-color: bisque;
+            border: 3px solid bisque;
+            border-radius: 12px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            margin-bottom: 40px;
+        }
+        .prediction-button:hover {
+            background-color: #f5deb3;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                width: 95%;
+                margin: 30px auto 15px auto;
+            }
+            .high-rating-title {
+                font-size: 1.5rem;
+                margin: 15px auto 10px auto;
+                text-align: center;
+            }
+            .genre-container {
+                max-width: 95%;
+                gap: 15px;
+            }
+            .genre-box {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .prediction-button {
+                display: block;
+                width: 90%;
+                max-width: 400px;
+                margin: 0 auto 40px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Predicted Rating: {{output}}</h1>
+    <div class="high-rating-title">Movies with High Rating</div>
+    <div class="genre-container">
+        <div class="genre-box">
+            <b>Drama</b>
+            <p>i. Invisible Hacker<br>ii. Tahanan (Home)<br>iii. Mrugtrushna<br>iv. Prince Oak Oakleyski Andronovo</p>
+        </div>
+        <div class="genre-box">
+            <b>Action</b>
+            <p>i. Journey of Eternity<br>ii. An Example of Teenage Boredom: The Movie<br>iii. Love Mein</p>
+        </div>
+        <div class="genre-box">
+            <b>Adventure</b>
+            <p>i. The Universal Quest<br>ii. Kalpvariksha (Part One): Paramchakra<br>iii. La Canne du Roi</p>
+        </div>
+        <div class="genre-box">
+            <b>Crime</b>
+            <p>i. Asatveera<br>ii. The Next Morning<br>iii. Nji Prej Nesh<br>iv. Bluff<br>v. NINA</p>
+        </div>
+        <div class="genre-box">
+            <b>Romance</b>
+            <p>i. I Found My Heart in Sante Fe<br>ii. Adai Mazhai Kaalam<br>iii. Silsila Sidnaaz Ka<br>iv. Bablee</p>
+        </div>
+        <div class="genre-box">
+            <b>Thriller</b>
+            <p>i. Marika<br>ii. Dark Highway<br>iii. The Trees of the East<br>iv. Shush</p>
+        </div>
+    </div>
+</body>
+</html>
